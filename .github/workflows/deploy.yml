@@ -1,4 +1,4 @@
-name: Deploy PMOffice Wiki
+name: Redirect to PMOffice
 on:
   push:
     branches: [main]
@@ -25,11 +25,11 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm run docs:build
+      - run: node scripts/build-redirects.mjs
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request'
         with:
-          path: docs/.vitepress/dist
+          path: docs/.vitepress/redirect-dist
   deploy:
     if: github.event_name != 'pull_request'
     needs: build

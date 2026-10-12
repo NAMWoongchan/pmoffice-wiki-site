@@ -9,3 +9,4 @@ _3. Prompt/
 *결과안내*
 *.log
 .DS_Store
+docs/.vitepress/redirect-dist/
